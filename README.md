@@ -11,10 +11,9 @@ This project showcases the potential of AI in **context-aware media recommendati
 - Refining the playlist mapping mechanism
 - Introducing personalization to adapt to individual user preferences
 
-
 ## Overview
 - ⚡ Emotion classification using **ResNet18 + CBAM**
-- 📈 Trained on **FER-2013** dataset (7 emotions → 4 selected)
+- 📈 Trained on **FER-2013** dataset (7 emotions → 4 selected: happy, sad, angry, neutral)
 - 🎭 Real-time facial emotion detection via webcam
 - 🎼 Spotify integration for emotion-based music recommendations
 - 📊 Model evaluation with accuracy, precision, recall, F1-score
@@ -37,11 +36,13 @@ This project showcases the potential of AI in **context-aware media recommendati
 4. **Evaluation**
    - Model performance on test data (Confusion Matrix, Accuracy, F1-score)
 
+
 ## Technologies Used
 - **Python, PyTorch, OpenCV**
 - **Spotify Web API** (spotipy)
 - **pandas, scikit-learn, matplotlib**
 - **Google Colab** for training and prototyping
+
 
 ## To Run the Project
 1. Clone the repository:
