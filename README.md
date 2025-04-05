@@ -1,6 +1,16 @@
 # 🎶🤖 Facial Emotion Recognition with Attention-Enhanced ResNet18 for Emotion-Based Playlist Mapping 
 
-This project focuses **Facial Emotion Recognition (FER)** with **Spotify-based music recommendations**, offering an interactive experience where the system detects your facial expression and maps it to a emotion-aligned playlist in real time. Built using deep learning and computer vision techniques, the application leverages a **ResNet18 model enhanced with CBAM (Convolutional Block Attention Module)** for improved emotion classification accuracy.
+This project focuses on developing a **Facial Emotion Recognition (FER)** model using **ResNet18 enhanced with CBAM (Convolutional Block Attention Module)** to improve classification accuracy. The trained model is integrated with the **Spotify Web API** to enable **emotion-aligned playlist mapping** based on real-time facial expressions detected via webcam.
+
+The CBAM-enhanced ResNet18 model achieved an accuracy of **78%**, outperforming baseline models and confirming the benefit of attention mechanisms in FER tasks. The system demonstrates **real-time emotion recognition** and provides an interactive music recommendation experience aligned with the user's emotional state.
+
+While the system does not generate fully personalized playlists based on listening history, it offers an **automated, emotion-aware music recommendation** process, enhancing user engagement through affective computing.
+
+This project showcases the potential of AI in **context-aware media recommendations** and lays the groundwork for future research in emotionally responsive systems. Future improvements may include:
+- Expanding the emotion categories beyond the core four
+- Refining the playlist mapping mechanism
+- Introducing personalization to adapt to individual user preferences
+
 
 ## Overview
 - ⚡ Emotion classification using **ResNet18 + CBAM**
@@ -11,7 +21,7 @@ This project focuses **Facial Emotion Recognition (FER)** with **Spotify-based m
 
 ## System Architecture
 1. **Data Preparation**
-   - Dataset: FER-2013 (32k grayscalebimages, 48x48)
+   - Dataset: [FER-2013](https://www.kaggle.com/datasets/msambare/fer2013)  (32k grayscale images, 48x48)
    - Preprocessing: image filtering, augmentation, class balancing
      
 2. **Model Training**
