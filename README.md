@@ -1,47 +1,50 @@
-# 🎶🤖 Facial Emotion Recognition with Attention-Enhanced ResNet18 for Emotion-Based Playlist Mapping 
+# 🎶Facial Emotion Recognition for Emotion-Based Playlist Mapping 
 
-This project focuses on developing a **Facial Emotion Recognition (FER)** model using **ResNet18 enhanced with CBAM (Convolutional Block Attention Module)** to improve classification accuracy. The trained model is integrated with the **Spotify Web API** to enable **emotion-aligned playlist mapping** based on real-time facial expressions detected via webcam.
+This project presents a deep learning-based system for **Facial Emotion Recognition (FER)** and **emotion-driven music recommendation**. Using a webcam feed, the system detects real-time facial emotions and maps them to curated Spotify playlists. At the core is a **ResNet18 model enhanced with CBAM (Convolutional Block Attention Module)**, trained on the FER-2013 dataset to improve emotion classification accuracy.
 
-The CBAM-enhanced ResNet18 model achieved an accuracy of **78%**, outperforming baseline models and confirming the benefit of attention mechanisms in FER tasks. The system demonstrates **real-time emotion recognition** and provides an interactive music recommendation experience aligned with the user's emotional state.
+The CBAM-enhanced ResNet18 achieved **78% test accuracy**, outperforming baseline CNN models. The project showcases the synergy between computer vision and music recommendation APIs, highlighting the potential of **affective computing** in user-centric media experiences.
 
-While the system does not generate fully personalized playlists based on listening history, it offers an **automated, emotion-aware music recommendation** process, enhancing user engagement through affective computing.
+>  Note: The project report is intentionally not included to protect original academic documentation._
 
-This project showcases the potential of AI in **context-aware media recommendations** and lays the groundwork for future research in emotionally responsive systems. Future improvements may include:
-- Expanding the emotion categories beyond the core four
-- Refining the playlist mapping mechanism
-- Introducing personalization to adapt to individual user preferences
+## Key Features
+- 🎭 Real-time facial emotion detection from webcam
+- 🧠 Deep learning model using **ResNet18 + CBAM**
+- 🎵 Spotify playlist mapping based on detected mood
+- 📊 Evaluation with Accuracy, Precision, Recall, F1-score
+- 🔄 FER-to-Playlist loop: face → emotion → music
 
-## Overview
-- ⚡ Emotion classification using **ResNet18 + CBAM**
-- 📈 Trained on **FER-2013** dataset (7 emotions → 4 selected: happy, sad, angry, neutral)
-- 🎭 Real-time facial emotion detection via webcam
-- 🎼 Spotify integration for emotion-based music recommendations
-- 📊 Model evaluation with accuracy, precision, recall, F1-score
 
-## System Architecture
-1. **Data Preparation**
-   - Dataset: [FER-2013](https://www.kaggle.com/datasets/msambare/fer2013)  (32k grayscale images, 48x48)
-   - Preprocessing: image filtering, augmentation, class balancing
-     
-2. **Model Training**
-   - Baseline: Simple CNN
-   - Proposed Final Model: ResNet18 with CBAM
-     
-3. **Emotion-to-Music Mapping**
-   - Webcam integration for live input
-   - Trained model classifies emotion (happy, sad, angry, neutral)
-   - Spotify API retrieves playlists based on detected emotion
-   - Mapping logic aligns moods to playlist types (e.g. sad → depressed playlist)
-     
-4. **Evaluation**
-   - Model performance on test data (Confusion Matrix, Accuracy, F1-score)
+## Model Architecture
+Below is a simplified version of the model used in this project:
+![Model Design](docs/architecture_diagram.png)
+> _The architecture enhances ResNet18 with CBAM attention blocks to focus on key spatial and channel features relevant to emotion detection._
 
+## Workflow
+The following diagram illustrates the complete system workflow — from capturing a user's facial expression to generating an emotion-aligned playlist:
+![Worflow](docs/workflow_diagram.png)
+
+
+## Emotion-to-Playlist Mapping
+| Detected Emotion | Playlist Type          |
+|------------------|------------------------|
+| Happy            | Uplifting / Pop        |
+| Sad              | Mellow / Acoustic      |
+| Angry            | Intense / Rock         |
+| Neutral          | Chill / Lo-fi          |
+
+
+## Dataset
+- **FER-2013**: 32,000 grayscale images (48x48 resolution)
+- Emotion classes: 7 total → used 4 (Happy, Sad, Angry, Neutral)
+- Data augmentation: rotation, flip, occlusion simulation
+- Source: [Kaggle Dataset](https://www.kaggle.com/datasets/msambare/fer2013)
+  
 
 ## Technologies Used
-- **Python, PyTorch, OpenCV**
-- **Spotify Web API** (spotipy)
-- **pandas, scikit-learn, matplotlib**
-- **Google Colab** for training and prototyping
+- **Python**, **PyTorch**, **OpenCV**
+- **Spotify Web API** via [`spotipy`](https://spotipy.readthedocs.io/)
+- **Google Colab** for model training
+- **pandas**, **matplotlib**, **scikit-learn** for evaluation
 
 
 ## To Run the Project
