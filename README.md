@@ -16,7 +16,8 @@ The CBAM-enhanced ResNet18 achieved **78% test accuracy**, outperforming baselin
 
 ## Model Architecture
 Below is a simplified version of the model used in this project:
-![Model Design](docs/architecture_diagram.png)
+<img src="docs/architecture_diagram.png" width="500" alt="Model Design"/>
+
 > _The architecture enhances ResNet18 with CBAM attention blocks to focus on key spatial and channel features relevant to emotion detection._
 
 ## Workflow
