@@ -175,3 +175,26 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Frontend dependencies/build output
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Backend local files
+backend/.env
+backend/.venv/
+
+# Model weights
+*.pth
+*.pt
+*.onnx
+backend/app/models/
+
+# Research datasets/checkpoints
+fer-musicplaylist-jupyter/data/
+fer-musicplaylist-jupyter/dataset/
+fer-musicplaylist-jupyter/.ipynb_checkpoints/
+
+# Credentials
+kaggle.json
