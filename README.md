@@ -1,4 +1,4 @@
-﻿# FER Music Playlist
+# FER Music Playlist
 
 FER Music Playlist is a single-page web application that detects a user's facial emotion from a webcam feed and recommends a Spotify playlist that matches the detected mood. The project combines facial emotion recognition, deep learning inference, and Spotify playlist generation in one interactive demo.
 
@@ -57,10 +57,23 @@ FER-MusicPlaylist/
 5. The app maps the detected emotion to a playlist mood.
 6. The backend creates a Spotify playlist and returns the Spotify playlist link.
 
-## Model Architecture
-Designed architecture diagram:
+## System Workflow
 
-<img src="docs/architecture_diagram.png" width="500" alt="Model architecture diagram" />
+The system workflow shows the end-to-end backend and recommendation process, from webcam capture to emotion mapping and Spotify playlist generation.
+
+<p align="center">
+  <img src="docs/architecture_diagram.png" width="360" alt="Emotion-to-playlist system workflow" />
+</p>
+
+## Model Architecture
+
+The model architecture shows the ResNet18-CBAM pipeline used for facial emotion classification.
+
+<p align="center">
+  <img src="docs/workflow_diagram.png" width="680" alt="ResNet18-CBAM model architecture" />
+</p>
+
+The trained model is based on FER-2013. The web app demo focuses on playlist-mapped emotions such as Happy, Sad, Angry, and Neutral.
 
 ## Emotion-to-Playlist Mapping
 
