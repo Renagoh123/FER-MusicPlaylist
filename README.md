@@ -1,65 +1,198 @@
-# 🎶Facial Emotion Recognition for Emotion-Based Playlist Mapping 
+﻿# FER Music Playlist
 
-This project presents a deep learning-based system for **Facial Emotion Recognition (FER)** and **emotion-driven music recommendation**. Using a webcam feed, the system detects real-time facial emotions and maps them to curated Spotify playlists. At the core is a **ResNet18 model enhanced with CBAM (Convolutional Block Attention Module)**, trained on the FER-2013 dataset to improve emotion classification accuracy.
+FER Music Playlist is a single-page web application that detects a user's facial emotion from a webcam feed and recommends a Spotify playlist that matches the detected mood. The project combines facial emotion recognition, deep learning inference, and Spotify playlist generation in one interactive demo.
 
-The CBAM-enhanced ResNet18 achieved **78% test accuracy**, outperforming baseline CNN models. The project showcases the synergy between computer vision and music recommendation APIs, highlighting the potential of **affective computing** in user-centric media experiences.
+The emotion recognition model is based on ResNet18 enhanced with CBAM attention and trained using the FER-2013 dataset. The current web app uses a Next.js frontend, FastAPI backend, PyTorch/OpenCV inference layer, and Spotify Web API integration.
 
->  Note: The project report is intentionally not included to protect original academic documentation._
+## Web App Preview
+
+![FER Music Playlist web app demo](docs/web-app-demo.png)
 
 ## Key Features
-- 🎭 Real-time facial emotion detection from webcam
-- 🧠 Deep learning model using **ResNet18 + CBAM**
-- 🎵 Spotify playlist mapping based on detected mood
-- 📊 Evaluation with Accuracy, Precision, Recall, F1-score
-- 🔄 FER-to-Playlist loop: face → emotion → music
 
+- Real-time webcam-based facial emotion detection demo
+- ResNet18 + CBAM model architecture for FER classification
+- Spotify account connection through the Spotify Web API
+- Emotion-to-playlist recommendation flow
+- Playlist creation and Spotify redirect support
+- Dashboard-style project sections for workflow, metrics, architecture, dataset, and tech stack
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js, React, TypeScript, CSS |
+| Backend | FastAPI, Uvicorn, Python |
+| Inference | PyTorch, TorchVision, OpenCV, Pillow |
+| Music API | Spotify Web API |
+| Dataset | FER-2013 dataset |
+
+## Project Structure
+
+```text
+FER-MusicPlaylist/
+├── backend/                    # FastAPI backend and inference API
+│   ├── app/
+│   │   ├── main.py             # API routes for health, prediction, Spotify auth, playlists
+│   │   ├── config.py           # Environment variable configuration
+│   │   ├── inference.py        # Emotion classifier loading/prediction logic
+│   │   ├── schemas.py          # API request/response models
+│   │   └── spotify.py          # Spotify login, search, and playlist creation logic
+│   └── requirements.txt        # Backend Python dependencies
+├── frontend/                   # Next.js single-page web app
+│   ├── src/app/                # App shell, page, and global styles
+│   ├── src/components/         # UI components such as camera/demo sections
+│   └── src/lib/                # Frontend API helper functions
+├── fer-musicplaylist-jupyter/  # Research notebook workspace
+├── docs/                       # README images and project diagrams
+└── README.md
+```
+
+## How It Works
+
+1. The user connects Spotify from the web app.
+2. The user starts webcam detection.
+3. The app captures a facial expression and sends it to the backend.
+4. The backend predicts the emotion using the FER model, or mock mode during demo setup.
+5. The app maps the detected emotion to a playlist mood.
+6. The backend creates a Spotify playlist and returns the Spotify playlist link.
 
 ## Model Architecture
-Below is a simplified version of the model used in this project:
-<img src="docs/architecture_diagram.png" width="500" alt="Model Design"/>
+Designed architecture diagram:
 
-> _The architecture enhances ResNet18 with CBAM attention blocks to focus on key spatial and channel features relevant to emotion detection._
-
-## Workflow
-The following diagram illustrates the complete system workflow — from capturing a user's facial expression to generating an emotion-aligned playlist:
-![Worflow](docs/workflow_diagram.png)
-
+<img src="docs/architecture_diagram.png" width="500" alt="Model architecture diagram" />
 
 ## Emotion-to-Playlist Mapping
-| Detected Emotion | Playlist Type          |
-|------------------|------------------------|
-| Happy            | Uplifting / Pop        |
-| Sad              | Mellow / Acoustic      |
-| Angry            | Intense / Rock         |
-| Neutral          | Chill / Lo-fi          |
 
+| Detected Emotion | Playlist Type |
+|---|---|
+| Happy | Uplifting / Pop |
+| Sad | Mellow / Acoustic |
+| Angry | Intense / Rock |
+| Neutral | Chill / Lo-fi |
 
 ## Dataset
-- **FER-2013**: 32,000 grayscale images (48x48 resolution)
-- Emotion classes: 7 total → used 4 (Happy, Sad, Angry, Neutral)
-- Data augmentation: rotation, flip, occlusion simulation
-- Source: [Kaggle Dataset](https://www.kaggle.com/datasets/msambare/fer2013)
-  
 
-## Technologies Used
-- **Python**, **PyTorch**, **OpenCV**
-- **Spotify Web API** via [`spotipy`](https://spotipy.readthedocs.io/)
-- **Google Colab** for model training
-- **pandas**, **matplotlib**, **scikit-learn** for evaluation
+- Dataset: FER-2013
+- Image format: grayscale facial expression images
+- Emotion classes: 7 total classes in the original dataset
+- Project demo mapping focuses on Happy, Sad, Angry, and Neutral
+- Source: [FER-2013 Kaggle Dataset](https://www.kaggle.com/datasets/msambare/fer2013)
 
+The dataset is not committed to this repository because it contains many image files and would make the repository too large.
 
-## To Run the Project
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/yourusername/FER-MusicSync.git
-   cd FER-MusicSync
+## Model & Large File Notice
 
-2. Set up your .env file (for Spotify API credentials):
-   ```sh
-   SPOTIPY_CLIENT_ID=your_client_id
-   SPOTIPY_CLIENT_SECRET=your_client_secret
-   SPOTIPY_REDIRECT_URI=http://localhost:8888/callback
+Large local files are excluded from GitHub, including the dataset, virtual environments, frontend dependencies, build output, and model weights.
 
-3. Launch the notebook or run the script:
-   ```sh
-   jupyter notebook
+To run real model inference, place the trained model file here:
+
+```text
+backend/app/models/model_5e5.pth
+```
+
+For demo/development mode, keep this in `backend/.env`:
+
+```env
+MOCK_INFERENCE=true
+```
+
+To use the trained model instead, set:
+
+```env
+MOCK_INFERENCE=false
+```
+
+## Setup & Run
+
+### 1. Clone the repository
+
+```sh
+git clone https://github.com/Renagoh123/FER-MusicPlaylist.git
+cd FER-MusicPlaylist
+```
+
+### 2. Set up the backend
+
+```sh
+cd backend
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+The backend runs at:
+
+```text
+http://127.0.0.1:8000
+```
+
+Health check:
+
+```text
+http://127.0.0.1:8000/api/health
+```
+
+### 3. Set up the frontend
+
+Open a second terminal:
+
+```sh
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend runs at:
+
+```text
+http://localhost:3000
+```
+
+## Environment Variables
+
+Create a local environment file at:
+
+```text
+backend/.env
+```
+
+Example:
+
+```env
+APP_ENV=development
+FRONTEND_ORIGIN=http://localhost:3000
+API_BASE_URL=http://127.0.0.1:8000
+MOCK_INFERENCE=true
+
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=http://127.0.0.1:8000/api/spotify/callback
+
+CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+```
+
+In the Spotify Developer Dashboard, add this redirect URI:
+
+```text
+http://127.0.0.1:8000/api/spotify/callback
+```
+
+Do not commit `.env`, `backend/.env`, `kaggle.json`, model weights, datasets, `node_modules`, `.next`, or virtual environments.
+
+## Results & Performance
+
+The CBAM-enhanced ResNet18 model achieved approximately 78% test accuracy on the FER-2013 test set. The web app displays model metrics such as precision, recall, and F1-score as part of the project dashboard.
+
+## Future Improvements
+
+- Deploy the frontend and backend for public access
+- Add user-selectable playlist styles for each emotion
+- Store playlist history after user consent
+- Improve real-time inference performance
+- Expand the recommendation mapping to all FER-2013 emotion classes
+
+## License
+
+This project is provided for academic and portfolio purposes. 
